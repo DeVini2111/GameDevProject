@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using System.Threading;
 
 public class Player2Movement : MonoBehaviour
 {
@@ -28,13 +30,14 @@ public class Player2Movement : MonoBehaviour
         
     }
     
-    void OnCollisionEnter(Collision col)
+    void OnCollisionStay(Collision col)
     {
         if (col.gameObject.name == "Player 1")
         {
             canMove = false;
         }
     }
+    
     void OnCollisionExit(Collision col)
     {
         canMove = true;

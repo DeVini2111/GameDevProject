@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Movement : MonoBehaviour
 {
     public float speed = 5f;
@@ -33,6 +34,8 @@ public class Movement : MonoBehaviour
         if (col.gameObject.name == "Player 2")
         {
             canMove = false;
+            //Thread.Sleep(2000);
+            //canMove = true;
         }
     }
     void OnCollisionExit(Collision col)
