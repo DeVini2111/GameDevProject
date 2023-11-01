@@ -21,31 +21,24 @@ public class Player1Movement : MonoBehaviour
     // Update is called once per frame
     //Animation for moving and stopping have to be set
     void FixedUpdate()
-    { 
-        if (canMove == true) 
+    {
+        if (canMove) 
         {
-            
-            playerRigidbody.MovePosition(transform.position + Vector3.forward 
-            * speed * Time.deltaTime);
-            
-            
+            playerRigidbody.MovePosition(transform.position + Vector3.forward * speed * Time.deltaTime);
         }
         
     }
     //Animation for going to Idle after hitting an enemy fighter or another friendl fighter
     
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Player 2")
-        {
+        if (col.CompareTag("Units Player1") || col.CompareTag("Units Player2")) {
             canMove = false;
-            animator.ResetTrigger("Moving");
+            animator.SetTrigger("Idle");
         }
     }
-    void OnCollisionExit(Collision col)
-    {
+    public void StartMoving() {   
         canMove = true;
         animator.SetTrigger("Moving");
     }
-    
 }

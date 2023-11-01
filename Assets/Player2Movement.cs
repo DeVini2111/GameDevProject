@@ -24,26 +24,21 @@ public class Player2Movement : MonoBehaviour
     { 
         if (canMove == true) 
         {
-            
-            playerRigidbody.MovePosition(transform.position + Vector3.back 
-            * speed * Time.deltaTime);
-            
-            
+            playerRigidbody.MovePosition(transform.position + Vector3.back * speed * Time.deltaTime);
         }
         
     }
     //Animation for going to Idle after hitting an enemy fighter or another friendl fighter
-    void OnCollisionEnter(Collision col)
+    void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.name == "Player 1")
-        {
+        if (col.CompareTag("Units Player1") || col.CompareTag("Units Player2")) {
             canMove = false;
-            animator.SetTrigger("Moving");
+            animator.SetTrigger("Idle");
         }
     }
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider col)
     {
+        Debug.Log("Moving again");
         canMove = true;
-        animator.SetTrigger("Moving");
     }
 }
