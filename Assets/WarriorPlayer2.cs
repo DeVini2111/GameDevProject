@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Threading;
-using OpenCover.Framework.Model;
 
 public class WarriorPlayer2 : MonoBehaviour
 {
