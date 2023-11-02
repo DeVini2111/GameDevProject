@@ -66,12 +66,26 @@ public class WarriorPlayer1 : MonoBehaviour
         {
             //Only works for one Unit, another solution required for hitting different types of Units
             //Coroutine needed for substracting the health a bit later
-            enemy.GetComponent<WarriorPlayer2>().TakeDamage(damageOutput);
-            if (enemy.GetComponent<WarriorPlayer2>().currentHealth < 0)
+            //Only works for one Unit, another solution required for hitting different types of Units
+            //TODO
+            //Refactor to make "enemy" a universal tag by using children of classes
+            //REMOVE THE TRY CATCH ATROCITY!!!
+            if (enemy.GetComponent<WarriorPlayer2>() == true)
             {
-                CancelInvoke("Attack");
-                GetComponent<Player1Movement>().StartMoving();
+                enemy.GetComponent<WarriorPlayer2>().TakeDamage(damageOutput);
             }
+
+            else if (enemy.GetComponent<ArcherP2>() == true)
+            {
+                enemy.GetComponent<ArcherP2>().TakeDamage(damageOutput);
+            }
+
+            else if (enemy.GetComponent<BaseHealth>() == true)
+            {
+                enemy.GetComponent<BaseHealth>().TakeDamage(damageOutput);
+            }
+
+
 
         }
 

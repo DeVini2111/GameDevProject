@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Threading;
-
+using OpenCover.Framework.Model;
 
 public class WarriorPlayer2 : MonoBehaviour
 {
@@ -45,24 +45,57 @@ public class WarriorPlayer2 : MonoBehaviour
         //Play attack animation
         //Detect enemies in range
         //Damage enemies in range
-        if (UnityEngine.Random.value < 0.2f) {
+        if (UnityEngine.Random.value < 0.2f)
+        {
             animator.SetTrigger("Attack1");
-            
-            
-        } else {
+
+
+        }
+        else
+        {
             animator.SetTrigger("Attack2");
-            
+
         }
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyUnits);
 
         foreach (Collider enemy in hitEnemies)
         {
+
+
+            if (enemy.GetComponent<WarriorPlayer1>() == true)
+            {
+                enemy.GetComponent<WarriorPlayer1>().TakeDamage(damageOutput);
+            }
+
+            else if (enemy.GetComponent<ArcherP1>() == true)
+            {
+                enemy.GetComponent<ArcherP1>().TakeDamage(damageOutput);
+            }
+
+            else if (enemy.GetComponent<BaseHealth>() == true)
+            {
+                enemy.GetComponent<BaseHealth>().TakeDamage(damageOutput);
+            }
             //Only works for one Unit, another solution required for hitting different types of Units
-            enemy.GetComponent<WarriorPlayer1>().TakeDamage(damageOutput);
+            //TODO
+            //Refactor to make "enemy" a universal tag by using children of classes
+            //REMOVE THE TRY CATCH ATROCITY!!!
+            /*try
+            {
+                enemy.GetComponent<WarriorPlayer1>().TakeDamage(damageOutput);
+                
+            }
+
+
+            catch (Exception e) {
+                enemy.GetComponent<BaseHealth>().TakeDamage(damageOutput);
+            }
+            
+        }*/
+
+
         }
-
-
     }
 
     void OnDrawGizmosSelected()
