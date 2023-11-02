@@ -73,11 +73,21 @@ public class WarriorPlayer1 : MonoBehaviour
             if (enemy.GetComponent<WarriorPlayer2>() == true)
             {
                 enemy.GetComponent<WarriorPlayer2>().TakeDamage(damageOutput);
+                if (enemy.GetComponent<WarriorPlayer2>().currentHealth < 0)
+                {
+                    CancelInvoke("Attack");
+                    GetComponent<Player1Movement>().StartMoving();
+                }
             }
 
             else if (enemy.GetComponent<ArcherP2>() == true)
             {
                 enemy.GetComponent<ArcherP2>().TakeDamage(damageOutput);
+                if (enemy.GetComponent<ArcherP2>().currentHealth < 0)
+                {
+                    CancelInvoke("Attack");
+                    GetComponent<Player1Movement>().StartMoving();
+                }
             }
 
             else if (enemy.GetComponent<BaseHealth>() == true)
@@ -113,6 +123,7 @@ public class WarriorPlayer1 : MonoBehaviour
     }
     
     void Die() {
+        Destroy(this);
         //Play DIe animation
         animator.SetBool("isDead", true);
         //disable Unit
@@ -120,6 +131,8 @@ public class WarriorPlayer1 : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         GetComponent<Player1Movement>().enabled = false;
         this.enabled = false;
+
+        
 
     }
     

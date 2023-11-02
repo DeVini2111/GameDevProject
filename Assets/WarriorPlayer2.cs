@@ -66,10 +66,20 @@ public class WarriorPlayer2 : MonoBehaviour
             if (enemy.GetComponent<WarriorPlayer1>() == true)
             {
                 enemy.GetComponent<WarriorPlayer1>().TakeDamage(damageOutput);
+                if (enemy.GetComponent<WarriorPlayer1>().currentHealth < 0)
+                {
+                    CancelInvoke("Attack");
+                    GetComponent<Player2Movement>().StartMoving();
+                }
             }
 
             else if (enemy.GetComponent<ArcherP1>() == true)
             {
+                if (enemy.GetComponent<ArcherP1>().currentHealth < 0)
+                {
+                    CancelInvoke("Attack");
+                    GetComponent<Player2Movement>().StartMoving();
+                }
                 enemy.GetComponent<ArcherP1>().TakeDamage(damageOutput);
             }
 

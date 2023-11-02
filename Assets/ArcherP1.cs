@@ -58,11 +58,17 @@ public class ArcherP1 : MonoBehaviour
 
         Collider ennemy = hitEnemies[0];
 
-        if (ennemy)
+       
+        if (ennemy.CompareTag("Units Player2"))
         {
             if (ennemy.GetComponent<WarriorPlayer2>() == true)
             {
                 ennemy.GetComponent<WarriorPlayer2>().TakeDamage(damageOutput);
+                if (ennemy.GetComponent<WarriorPlayer2>().currentHealth < 0)
+                {
+                    CancelInvoke("Attack");
+                    GetComponent<Player1Movement>().StartMoving();
+                }
             }
 
             else if (ennemy.GetComponent<BaseHealth>() == true)
@@ -138,6 +144,7 @@ public class ArcherP1 : MonoBehaviour
 
     void Die()
     {
+        Destroy(this);
         //Play DIe animation
         //disable Unit
         GetComponent<Rigidbody>().detectCollisions = false;

@@ -32,7 +32,7 @@ public class Player1Movement : MonoBehaviour
     
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("Units Player1") || col.CompareTag("Units Player2")) {
+        if (col.CompareTag("Units Player2")){ //col.CompareTag("Units Player1") || 
             canMove = false;
             animator.SetTrigger("Idle");
         }

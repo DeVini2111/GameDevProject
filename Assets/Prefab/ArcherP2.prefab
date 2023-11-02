@@ -260,7 +260,7 @@ Animator:
   m_GameObject: {fileID: 1860605567064870449}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41c5fb424367f7d48a6c10eb2aaedd81, type: 2}
+  m_Controller: {fileID: 9100000, guid: c9cc02d0ee7b3e94d85d65bb858d0a1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   healthBar: {fileID: 434432681017438691}
   attackPoint: {fileID: 5459972213315218351}
   range: {fileID: 2559492125663683162}
-  attackRange: 7.6
+  attackRange: 8
   enemyUnits:
     serializedVersion: 2
     m_Bits: 64
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  animator: {fileID: 0}
+  animator: {fileID: -872934446965448728}
 --- !u!1 &3237035660847229612
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ CapsuleCollider:
   m_Radius: 0.11
   m_Height: 2
   m_Direction: 0
-  m_Center: {x: 1, y: 0, z: 0}
+  m_Center: {x: 0.89, y: 0, z: 0}
 --- !u!1 &6115564508401339767
 GameObject:
   m_ObjectHideFlags: 0

@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 7624307816613573679}
   - component: {fileID: -743469610701263448}
   - component: {fileID: 1906086133583013846}
+  - component: {fileID: 7362260786181458814}
   m_Layer: 6
   m_Name: ArcherP1
   m_TagString: Units Player1
@@ -259,7 +260,7 @@ Animator:
   m_GameObject: {fileID: 1860605567064870449}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41c5fb424367f7d48a6c10eb2aaedd81, type: 2}
+  m_Controller: {fileID: 9100000, guid: c9cc02d0ee7b3e94d85d65bb858d0a1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -434,10 +435,24 @@ MonoBehaviour:
   healthBar: {fileID: 434432681017438691}
   attackPoint: {fileID: 5459972213315218351}
   range: {fileID: 2559492125663683162}
-  attackRange: 7.6
+  attackRange: 8
   enemyUnits:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &7362260786181458814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860605567064870449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9783776b446dd8f4096010208f4989e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  animator: {fileID: -872934446965448728}
 --- !u!1 &3237035660847229612
 GameObject:
   m_ObjectHideFlags: 0

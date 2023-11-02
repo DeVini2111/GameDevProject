@@ -41,7 +41,7 @@ public class ArcherP2 : MonoBehaviour
     {
         if (col.CompareTag("Units Player1"))
         {
-            print("proute");
+            print("spotted!");
             InvokeRepeating("Attack", 2f, 2f);
         }
 
@@ -58,11 +58,16 @@ public class ArcherP2 : MonoBehaviour
 
         Collider ennemy = hitEnemies[0];
 
-        if (ennemy)
+        if (ennemy.CompareTag("Units Player1"))
         {
             if (ennemy.GetComponent<WarriorPlayer1>() == true)
             {
                 ennemy.GetComponent<WarriorPlayer1>().TakeDamage(damageOutput);
+                if (ennemy.GetComponent<WarriorPlayer1>().currentHealth < 0)
+                {
+                    CancelInvoke("Attack");
+                    GetComponent<Player2Movement>().StartMoving();
+                }
             }
 
             else if (ennemy.GetComponent<BaseHealth>() == true)
@@ -70,6 +75,8 @@ public class ArcherP2 : MonoBehaviour
                 ennemy.GetComponent<BaseHealth>().TakeDamage(damageOutput);
             }
         }
+
+
         /*{
             try
             {
@@ -138,6 +145,7 @@ public class ArcherP2 : MonoBehaviour
 
     void Die()
     {
+        Destroy(this);
         //Play DIe animation
         //disable Unit
         GetComponent<Rigidbody>().detectCollisions = false;

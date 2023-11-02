@@ -31,7 +31,7 @@ public class Player2Movement : MonoBehaviour
     //Animation for going to Idle after hitting an enemy fighter or another friendl fighter
     void OnTriggerStay(Collider col)
     {
-        if (col.CompareTag("Units Player1") || col.CompareTag("Units Player2")) {
+        if (col.CompareTag("Units Player1")) {  // || col.CompareTag("Units Player2")
             canMove = false;
             animator.SetTrigger("Idle");
         }
@@ -40,5 +40,11 @@ public class Player2Movement : MonoBehaviour
     {
         Debug.Log("Moving again");
         canMove = true;
+    }
+
+    public void StartMoving()
+    {
+        canMove = true;
+        animator.SetTrigger("Moving");
     }
 }
