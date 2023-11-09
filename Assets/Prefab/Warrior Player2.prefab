@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8565344497583621897}
   - component: {fileID: 184089514946870772}
   - component: {fileID: 5056107633613883673}
-  - component: {fileID: 5002784622733055199}
   - component: {fileID: 6109530144393005130}
   m_Layer: 7
   m_Name: Warrior Player2
@@ -207,20 +206,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5002784622733055199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582977797727922226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e0611809669f314b92ce096492f87c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  animator: {fileID: 5056107633613883673}
 --- !u!114 &6109530144393005130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,16 +218,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6dd3a482234ea4cb3989e5264a359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  damageOutput: 20
+  unitRigidbody: {fileID: 4685948130932749417}
   healthBar: {fileID: 8565344497583621897}
   animator: {fileID: 5056107633613883673}
   attackPoint: {fileID: 6782247707553955647}
-  attackRange: 0.3
   enemyUnits:
     serializedVersion: 2
     m_Bits: 64
+  player: 1
+  attackRange: 0
 --- !u!1 &2730633536135089865
 GameObject:
   m_ObjectHideFlags: 0

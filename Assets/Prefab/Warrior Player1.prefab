@@ -294,11 +294,10 @@ GameObject:
   - component: {fileID: 8967262403104478770}
   - component: {fileID: 4280091546807292361}
   - component: {fileID: 5902650015539106659}
-  - component: {fileID: 8456676647561111136}
   - component: {fileID: 339766071687425551}
-  - component: {fileID: 4419224614712674099}
   - component: {fileID: 4768215855351205266}
   - component: {fileID: 3619315043466071984}
+  - component: {fileID: -3571593483911183903}
   m_Layer: 6
   m_Name: Warrior Player1
   m_TagString: Units Player1
@@ -373,20 +372,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 1
---- !u!114 &8456676647561111136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4686935362912205932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9783776b446dd8f4096010208f4989e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  animator: {fileID: 3619315043466071984}
 --- !u!114 &339766071687425551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,28 +416,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 6762857195992018535}
---- !u!114 &4419224614712674099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4686935362912205932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290baa779f9481b4497a2d9c172acfc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  damageOutput: 20
-  healthBar: {fileID: 339766071687425551}
-  animator: {fileID: 3619315043466071984}
-  attackPoint: {fileID: 399886235137640743}
-  attackRange: 0.3
-  enemyUnits:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!212 &4768215855351205266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -526,6 +489,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3571593483911183903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686935362912205932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6dd3a482234ea4cb3989e5264a359d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitRigidbody: {fileID: 5902650015539106659}
+  healthBar: {fileID: 339766071687425551}
+  animator: {fileID: 3619315043466071984}
+  attackPoint: {fileID: 399886235137640743}
+  enemyUnits:
+    serializedVersion: 2
+    m_Bits: 128
+  player: 0
+  speed: 2
+  canMove: 0
+  maxHealth: 0
+  currentHealth: 0
+  damageOutput: 0
+  attackRange: 0
+  canAttack: 0
+  inFrontOfUnit: {fileID: 0}
 --- !u!1 &6807573798009171536
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class ArcherP2 : MonoBehaviour
 {
-
+/**
     public int maxHealth = 75;
     public int currentHealth;
 
@@ -120,7 +120,7 @@ public class ArcherP2 : MonoBehaviour
 
 
         }
-        */
+    
 
     }
 
@@ -154,4 +154,5 @@ public class ArcherP2 : MonoBehaviour
         this.enabled = false;
 
     }
+    **/
 }

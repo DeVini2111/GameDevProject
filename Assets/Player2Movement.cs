@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Player2Movement : MonoBehaviour
-{
+{/**
     public float speed = 5f;
 
     private bool canMove;
@@ -47,4 +47,5 @@ public class Player2Movement : MonoBehaviour
         canMove = true;
         animator.SetTrigger("Moving");
     }
+    **/
 }

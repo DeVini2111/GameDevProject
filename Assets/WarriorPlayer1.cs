@@ -7,7 +7,7 @@ using UnityEngine.Animations;
 
 
 public class WarriorPlayer1 : MonoBehaviour
-{
+{/**
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -135,5 +135,5 @@ public class WarriorPlayer1 : MonoBehaviour
         
 
     }
-    
+    **/
 }
