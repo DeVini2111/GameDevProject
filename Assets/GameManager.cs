@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
 
     //Manage Menus and Victory
     //Dictionary to keep track of the spawned Units
-    Dictionary<Player, List<Unit>> unitsByPlayer = new Dictionary<Player, List<Unit>>();
+    private Dictionary<Player, List<Unit>> unitsByPlayer = new Dictionary<Player, List<Unit>>();
+
 
 
 
@@ -28,11 +29,33 @@ public class GameManager : MonoBehaviour
     //Assign the Bases for the different Players, to check if they won
     void Start()
     {
-    }
+        List<Unit> units = new List<Unit>();
+        basePlayer1 = GameObject.Find("BasePlayer1").GetComponent<Base>();
+        units.Add(basePlayer1);
+        unitsByPlayer.Add(Player.Player1, units);
+
+        basePlayer2 = GameObject.Find("BasePlayer2").GetComponent<Base>();
+
+        units = new List<Unit>
+        {
+            basePlayer2
+        };
+        unitsByPlayer.Add(Player.Player2, units);
+   }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+
+    public void AddUnit (Unit unit, Player player) {
+        if (player == Player.Player1) {
+            unitsByPlayer[Player.Player1].Add(unit);
+        } else {
+            unitsByPlayer[Player.Player2].Add(unit);
+        }
         
     }
 }

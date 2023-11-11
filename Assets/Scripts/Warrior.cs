@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Warrior : Unit
 {
@@ -54,7 +55,9 @@ public class Warrior : Unit
         //True, if the Raycast hits another collider
         if (Physics.Raycast(ray, out RaycastHit hitData, sight))
         {
-            Debug.Log(hitData.collider.gameObject.name);
+            //Debugging
+            //Debug.Log(hitData.collider.gameObject.name);
+
             //Return if the collider is not a Unit (should not happen)
             if (!(hitData.transform.gameObject.CompareTag("Units Player1") 
             || hitData.transform.gameObject.CompareTag("Units Player2"))) {
@@ -121,8 +124,11 @@ public class Warrior : Unit
             //Deal damage to Unit in front (enemy Unit in sight)
             unitInFront.TakeDamage(damageOutput * 2);
             //Wait till the Hit Animation of the unit in front played
-            while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
-                yield return null;
+            //If Unit has an animator
+            if (!unitInFront.animator.IsUnityNull()) {
+                while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
+                    yield return null;
+                }
             }
         } else {
             //Same principle here
@@ -132,10 +138,19 @@ public class Warrior : Unit
                 yield return null;
             }
             unitInFront.TakeDamage(damageOutput);
-            while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
-                yield return null;
+            if (!unitInFront.animator.IsUnityNull()) {
+                while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
+                    yield return null;
+                }
             }
         }
+        /**
+        if (unitInFront.isDead) {
+            if(!isDead) {
+                StartMoving();
+            }
+        }
+        **/
         yield return new WaitForSeconds(attackSpeed);
         //Unlock canAttack
         canAttack = true;
@@ -153,10 +168,11 @@ public class Warrior : Unit
      protected override void Die() {
         //Play Die animation
         animator.SetBool("isDead", true);
-
+        canMove = false;
+        isDead = true;
         //disable Unit or destroy Unit
         this.GetComponent<CapsuleCollider>().enabled = false;
-        //Destroy(this.unitRigidbody);
+        Destroy(this.unitRigidbody);
         this.enabled = false;
 
     }

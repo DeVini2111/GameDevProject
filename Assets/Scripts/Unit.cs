@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public Animator animator;
     public LayerMask enemyUnits;
     public Player player;
+    public bool isDead;
     protected Rigidbody unitRigidbody;
     protected float speed;
     protected bool canMove;
@@ -51,7 +52,7 @@ public class Unit : MonoBehaviour
 
     //Identifies that the Unit can move again
     protected virtual void StartMoving(){
-
+        
     }
     
     //Disables the Unit and it's collider upon call
