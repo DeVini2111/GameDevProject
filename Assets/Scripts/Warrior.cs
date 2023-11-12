@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 
 public class Warrior : Unit
 {
+    [SerializeField] private AudioSource attackSoundEffect;
+    [SerializeField] private AudioSource deathSoundEffect;
+
     //Sight Range for Raycast
     public float sight;
 
@@ -107,6 +110,7 @@ public class Warrior : Unit
         if (!canAttack) return;
         //Starts the Coroutine, which waits for the animation to play before attacking again
         StartCoroutine(AnimationAttackCoroutine());
+        attackSoundEffect.Play();
     }
     //Coroutine with waiting for animation
     IEnumerator AnimationAttackCoroutine() {
@@ -168,6 +172,7 @@ public class Warrior : Unit
      protected override void Die() {
         //Play Die animation
         animator.SetBool("isDead", true);
+        deathSoundEffect.Play();
         canMove = false;
         isDead = true;
         //disable Unit or destroy Unit

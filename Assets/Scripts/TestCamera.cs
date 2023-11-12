@@ -6,27 +6,29 @@ using UnityEngine;
 public class TestCamera : MonoBehaviour
 
 {
-    private float zoomSpeed = 2.0f;
+    //private float zoomSpeed = 2.0f;
     private Camera ZoomCamera;
 
-    private void Start(){
+    private void Start()
+    {
     }
 
 
     // Update is called once per frame
-    private void Update(){
-        Vector3 moveDir = new Vector3(0,0,0);
+    private void Update()
+    {
+        Vector3 moveDir = new Vector3(0, 0, 0);
         int edgeScrollSize = 20;
         float moveSpeed = 50f;
 
         // AD camera movement
-        if(Input.GetKey(KeyCode.A)) moveDir.x = -0.5f;
-        if(Input.GetKey(KeyCode.D)) moveDir.x = +0.5f;
+        if (Input.GetKey(KeyCode.A)) moveDir.z = -0.5f;
+        if (Input.GetKey(KeyCode.D)) moveDir.z = +0.5f;
 
 
         // Mouse side camera movement
-        if(Input.mousePosition.x < edgeScrollSize) moveDir.x = -0.5f;
-        if(Input.mousePosition.x > Screen.width - edgeScrollSize) moveDir.x = +0.5f;
+        if (Input.mousePosition.x < edgeScrollSize) moveDir.z = -0.5f;
+        if (Input.mousePosition.x > Screen.width - edgeScrollSize) moveDir.z = +0.5f;
 
         // Change position
         transform.position += moveDir * moveSpeed * Time.deltaTime;
@@ -41,7 +43,6 @@ public class TestCamera : MonoBehaviour
         // Camera Zoom
         float zoomSpeed = 10f;
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        transform.Translate(0, 0, scroll * zoomSpeed, Space.World);                                    
+        transform.Translate(scroll * zoomSpeed, 0, 0, Space.World);
     }
-    
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Archer : Unit
 {
+
+    [SerializeField] private AudioSource attackSoundEffect;
+    [SerializeField] private AudioSource deathSoundEffect;
+
     //Raycast variable for the sight
     public float sight;
     //Raycast variable for the range
@@ -142,6 +146,7 @@ public class Archer : Unit
 
         
         StartCoroutine(AnimationAttackCoroutine(toAttack, damage));
+        attackSoundEffect.Play();
     }
 
     IEnumerator AnimationAttackCoroutine(Unit toAttack, int damage) {
@@ -183,6 +188,7 @@ public class Archer : Unit
     {
         //Play die animation
         animator.SetBool("isDead", true);
+        deathSoundEffect.Play();
         canMove = false;
         isDead = true;
 

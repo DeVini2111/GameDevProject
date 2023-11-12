@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Base : Unit
 {
+
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -21,6 +23,7 @@ public class Base : Unit
         this.GetComponent<BoxCollider>().enabled = false;
         //Destroy(this.unitRigidbody);
         this.enabled = false;
-
     }
+
+
 }

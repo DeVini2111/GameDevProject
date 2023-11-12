@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
+    public DefeatScreen DefeatScreen;
+    public VictoryScreen VictoryScreen;
+    private bool soundplayed = false;
+    [SerializeField] private AudioSource victoryMelody;
+    [SerializeField] private AudioSource defeatMelody;
+
     //Manage the Player association for a unit
     public enum Player {
         Player1,
@@ -46,6 +52,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(basePlayer1.IsDead == true)
+        {
+            DefeatScreen.Setup();
+            if (!soundplayed) {
+                defeatMelody.Play();
+                soundplayed = true;
+            }
+        }
+
+        if(basePlayer2.IsDead == true)
+        {
+            VictoryScreen.Setup();
+            if (!soundplayed) {
+                victoryMelody.Play();
+                soundplayed = true;
+            }
+        }
+
         
     }
 

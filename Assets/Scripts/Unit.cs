@@ -61,4 +61,11 @@ public class Unit : MonoBehaviour
         //Destroy Unit
         //Inform Game Manager that Unit is dead
     }
+
+    //Checking state of the Unit (if its alive)
+    public bool IsDead
+    {
+        get { return isDead;}
+    }
+
 }
