@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource victoryMelody;
     [SerializeField] private AudioSource defeatMelody;
 
+    public GameObject moneyRef_P1;   // Reference to player money
+    public GameObject moneyRef_P2;   // Reference to player money
     //Manage the Player association for a unit
+
     public enum Player {
         Player1,
         Player2
@@ -19,9 +22,6 @@ public class GameManager : MonoBehaviour
     private Unit basePlayer2;
 
     //Manage connection to SPawnButton
-
-    //Manage Ressources
-
     //Manage Menus and Victory
     //Dictionary to keep track of the spawned Units
     private Dictionary<Player, List<Unit>> unitsByPlayer = new Dictionary<Player, List<Unit>>();
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
             basePlayer2
         };
         unitsByPlayer.Add(Player.Player2, units);
+
    }
 
     // Update is called once per frame
@@ -75,10 +76,23 @@ public class GameManager : MonoBehaviour
 
 
     public void AddUnit (Unit unit, Player player) {
-        if (player == Player.Player1) {
+        if (player == Player.Player1)
+        {
             unitsByPlayer[Player.Player1].Add(unit);
-        } else {
+            // Resource management:
+            if(moneyRef_P1.GetComponent<moneyCountP1>().money >= 20) //TODO: Add separate unit costs by referencing unit class with "unit cost"!
+            {
+                moneyRef_P1.GetComponent<moneyCountP1>().substractMoney(20);
+            }
+        }
+        else
+        {
             unitsByPlayer[Player.Player2].Add(unit);
+            // Resource management:
+            if(moneyRef_P2.GetComponent<moneyCountP2>().money >= 20) //TODO: Add separate unit costs by referencing unit class with "unit cost"!
+            {
+                moneyRef_P2.GetComponent<moneyCountP2>().substractMoney(20); 
+            }
         }
         
     }
