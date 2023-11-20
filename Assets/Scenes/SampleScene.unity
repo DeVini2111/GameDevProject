@@ -3287,6 +3287,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 0
   moneyText: {fileID: 1284591038}
+--- !u!114 &1206387192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206387185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ec93a3a37d833478b10d2818ebf71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warrior: {fileID: 1582977797727922226, guid: 7d07358c049c30844a15b8623014d778, type: 3}
+  archer: {fileID: 1860605567064870449, guid: 0cfbaca0f3c1eaa43b294c88da6eee75, type: 3}
+  spawnPoint: {fileID: 15113088}
+  gameManager: {fileID: 33602002}
+  Player2: 1
+  cooldownTime: 2
 --- !u!1 &1284591036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,6 +4373,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: d763d2e6db3a6f44c975a6e31609a208, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1206387190}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: d763d2e6db3a6f44c975a6e31609a208, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1206387192}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: d763d2e6db3a6f44c975a6e31609a208, type: 3}
 --- !u!1001 &1725433547
 PrefabInstance:

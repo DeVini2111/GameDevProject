@@ -5,7 +5,7 @@ using TMPro;
 
 public class UnitSpawner : MonoBehaviour
 {
-    public GameObject unitPrefab; // The unit you want to spawn
+    public GameObject unitPrefab ; // The unit you want to spawn
     public Transform spawnPoint;  // The position where the unit should spawn
     private Button spawnButton;    // Reference to your button
     private TextMeshProUGUI spawnButtonText;  // Text component of the button
@@ -40,7 +40,7 @@ public class UnitSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnUnit()
+    public void SpawnUnit()
     {
         if (Time.time > nextSpawnTime)
         {
