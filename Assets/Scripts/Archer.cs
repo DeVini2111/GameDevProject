@@ -70,7 +70,7 @@ public class Archer : Unit
         if (Physics.Raycast(sightRay, out RaycastHit hitData, sight))
         {
             //Debugging
-            Debug.Log(hitData.collider.gameObject.name);
+            //Debug.Log(hitData.collider.gameObject.name);
 
             //Return if the collider is not a Unit (should not happen)
             if (!(hitData.transform.gameObject.CompareTag("Units Player1") 

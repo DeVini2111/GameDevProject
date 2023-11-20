@@ -14,6 +14,7 @@ public class AI : MonoBehaviour
     public GameManager.Player Player2;
     public float cooldownTime = 2.0f; // Adjust this as needed for your cooldown time
     private float nextSpawnTime = 0.0f;
+    public GameObject moneyRef_P2;   // Reference to player money
     int unitspawn;
     // Start is called before the first frame update
     void Start()
@@ -35,13 +36,13 @@ public class AI : MonoBehaviour
     public void SpawnUnit()
     {
         unitspawn = Random.Range(1, 3);
-        if (Time.time > nextSpawnTime && unitspawn == 1)
+        if (Time.time > nextSpawnTime && unitspawn == 1 && moneyRef_P2.GetComponent<moneyCountP2>().money >= 20)
         {
             Instantiate(warrior, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(warrior.GetComponent<Warrior>(), Player2);
             nextSpawnTime = Time.time + cooldownTime;
         }
-        else if(Time.time > nextSpawnTime && unitspawn == 2)
+        else if(Time.time > nextSpawnTime && unitspawn == 2 && moneyRef_P2.GetComponent<moneyCountP2>().money >= 20)
         {
             Instantiate(archer, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(archer.GetComponent<Archer>(), Player2);
