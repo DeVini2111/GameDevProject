@@ -7,18 +7,20 @@ public class Archer : Unit
 
     [SerializeField] private AudioSource attackSoundEffect;
     [SerializeField] private AudioSource deathSoundEffect;
-
     //Raycast variable for the sight
     public float sight;
     //Raycast variable for the range
     public float range;
     //Reference to the enemy unit in range
+
     private Unit enemyInRange;
-    private bool inMelee;
+
+    private bool inRange;
+
     protected override void Start()
     {
         maxHealth = 70;
-        speed = 6f;
+        speed = 5f;
         canAttack = true;
         attackSpeed = 2f;
         damageOutput = 10;
@@ -41,9 +43,8 @@ public class Archer : Unit
             }
         }
 
-
-        //Raycast to get the Unit in front of this one
-        //Since it's a ranged Unit another Raycast is needed to detect enemies in range
+        //Since it's a ranged Unit Raycast is needed to detect enemies in range
+        //Stops when enemie is in range or any unit is in sight
         Ray sightRay;
         Ray shootRay;
         if (player == GameManager.Player.Player1) {
@@ -67,6 +68,7 @@ public class Archer : Unit
             }
 
         //True, if the Raycast hits another collider
+        //controls the movement if a another Unit is in Front
         if (Physics.Raycast(sightRay, out RaycastHit hitData, sight))
         {
             //Debugging
@@ -78,52 +80,37 @@ public class Archer : Unit
                 return;
             }
 
-            //Sets the Unit in Front to the object 
-            unitInFront = hitData.transform.gameObject.GetComponent<Unit>();
-
             //Stops the Unit if it moves
-            if (canMove) {
-                canMove = false;
-                animator.SetTrigger("Idle");
-            }
-            //Attacks if the respective Unit is an enemy
-            if (player == GameManager.Player.Player1) {
-                if (unitInFront.CompareTag("Units Player2")) {
-                    inMelee = true;
-                    if (canAttack) {
-                        Attack();
-                    }
-                }
-            } else {
-                if (unitInFront.CompareTag("Units Player1"))
-                {
-                    inMelee = true;
-                    if (canAttack)
-                    {
-                        Attack();
-                    }
-                }
-            }
-        } else if (!canMove && !inMelee) {
-            canMove = true;
+            canMove = false;
+            animator.SetTrigger("Idle");
+        } else if (!inRange){
+            StartMoving();
         }
         //Detect if enemy is in range (Ray collided with an enemy)
-        if (!inMelee) {
-            if (player == GameManager.Player.Player1) {
-                if (Physics.Raycast(shootRay, out RaycastHit hit, range, 1<<7)) {
-                    enemyInRange = hit.transform.gameObject.GetComponent<Unit>();
-                    if (canAttack) {
-                        Attack();
-                    }
+        if (player == GameManager.Player.Player1) {
+            if (Physics.Raycast(shootRay, out RaycastHit hit, range, 1<<7)) {
+                inRange = true;
+                enemyInRange = hit.transform.gameObject.GetComponent<Unit>();
+                canMove = false;
+                animator.SetTrigger("Idle");
+                if (canAttack) {
+                    Attack();
                 }
-
             } else {
-                if (Physics.Raycast(shootRay, out RaycastHit hit, range, 1<<6)) {
-                    enemyInRange = hit.transform.gameObject.GetComponent<Unit>();
-                    if (canAttack) {
-                        Attack();
-                    }
+                inRange = false;
+            }
+
+        } else {
+            if (Physics.Raycast(shootRay, out RaycastHit hit, range, 1<<6)) {
+                inRange = true;
+                enemyInRange = hit.transform.gameObject.GetComponent<Unit>();
+                canMove = false;
+                animator.SetTrigger("Idle");
+                if (canAttack) {
+                    Attack();
                 }
+            } else {
+                inRange = false;
             }
         }
 
@@ -139,17 +126,13 @@ public class Archer : Unit
         }
         int damage = damageOutput;
         Unit toAttack = enemyInRange;
-        if (inMelee) {
-            damage = damageOutput / 2;
-            toAttack = unitInFront;
-        }
 
         
-        StartCoroutine(AnimationAttackCoroutine(toAttack, damage));
+        StartCoroutine(AnimationAttackCoroutine(damage));
         attackSoundEffect.Play();
     }
 
-    IEnumerator AnimationAttackCoroutine(Unit toAttack, int damage) {
+    IEnumerator AnimationAttackCoroutine(int damage) {
         canAttack = false;
 
         animator.SetTrigger("Attack");
@@ -160,21 +143,14 @@ public class Archer : Unit
             yield return null;
         }
 
-        toAttack.TakeDamage(damage);
+        enemyInRange.TakeDamage(damage);
 
-        if (!toAttack.animator.IsUnityNull()) {
-                while (toAttack.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
+        if (!enemyInRange.animator.IsUnityNull()) {
+                while (enemyInRange.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
                     yield return null;
                 }
         }
-        /**if (toAttack.isDead) {
-            if(!isDead) {
-                StartMoving();
-            }
-        }
-        **/
         yield return new WaitForSeconds(attackSpeed / 1.5f);
-        inMelee = false;
         canAttack = true;
 
     }

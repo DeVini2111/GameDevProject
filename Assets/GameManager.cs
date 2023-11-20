@@ -77,21 +77,32 @@ public class GameManager : MonoBehaviour
 
     public void AddUnit (Unit unit, Player player) {
         if (player == Player.Player1)
-        {
-            unitsByPlayer[Player.Player1].Add(unit);
+        {   
             // Resource management:
             if(moneyRef_P1.GetComponent<moneyCountP1>().money >= 20) //TODO: Add separate unit costs by referencing unit class with "unit cost"!
             {
                 moneyRef_P1.GetComponent<moneyCountP1>().substractMoney(20);
+                unitsByPlayer[Player.Player1].Add(unit);
+                //Debug.Log("Unit purchased by player 1!");
             }
+            else
+            {
+                //Debug.Log("Not enough money!");
+            }
+
         }
         else
         {
-            unitsByPlayer[Player.Player2].Add(unit);
             // Resource management:
             if(moneyRef_P2.GetComponent<moneyCountP2>().money >= 20) //TODO: Add separate unit costs by referencing unit class with "unit cost"!
             {
-                moneyRef_P2.GetComponent<moneyCountP2>().substractMoney(20); 
+                moneyRef_P2.GetComponent<moneyCountP2>().substractMoney(20);
+                unitsByPlayer[Player.Player2].Add(unit);
+                //Debug.Log("Unit purchased by player 2!");
+            }
+            else
+            {
+                //Debug.Log("Not enough money!");
             }
         }
         

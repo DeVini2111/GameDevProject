@@ -9,6 +9,11 @@ public class VictoryScreen : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void MainMenuButton() 
+    {
+        SceneManager.LoadScene(0);
+    }
+    
     public void RestartButton() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

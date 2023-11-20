@@ -1741,7 +1741,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 706106884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1868090613}
+        m_TargetAssemblyTypeName: DefeatScreen, Assembly-CSharp
+        m_MethodName: MainMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &706106884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,6 +2068,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 1860605567064870449, guid: f64bce7885cd39b4a895c689e0a71238, type: 3}
   spawnPoint: {fileID: 1061866271}
   gameManager: {fileID: 33602002}
+  moneyRef_P1: {fileID: 351063061}
   player: 0
   cooldownTime: 2
 --- !u!1 &879538207
@@ -2153,6 +2166,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 1582977797727922226, guid: 7d07358c049c30844a15b8623014d778, type: 3}
   spawnPoint: {fileID: 15113088}
   gameManager: {fileID: 33602002}
+  moneyRef_P1: {fileID: 1206387185}
   player: 0
   cooldownTime: 2
 --- !u!1 &928402901
@@ -2974,7 +2988,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1160854571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1303252232}
+        m_TargetAssemblyTypeName: VictoryScreen, Assembly-CSharp
+        m_MethodName: MainMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1160854571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3305,6 +3331,7 @@ MonoBehaviour:
   gameManager: {fileID: 33602002}
   Player2: 1
   cooldownTime: 2
+  moneyRef_P2: {fileID: 1206387185}
 --- !u!1 &1284591036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,6 +4870,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 1860605567064870449, guid: 0cfbaca0f3c1eaa43b294c88da6eee75, type: 3}
   spawnPoint: {fileID: 15113088}
   gameManager: {fileID: 33602002}
+  moneyRef_P1: {fileID: 1206387185}
   player: 0
   cooldownTime: 2
 --- !u!1 &1911568979
@@ -5642,6 +5670,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 4686935362912205932, guid: d9d315dec9985604bb422bc1f5f7fe14, type: 3}
   spawnPoint: {fileID: 1061866271}
   gameManager: {fileID: 33602002}
+  moneyRef_P1: {fileID: 351063061}
   player: 0
   cooldownTime: 2
 --- !u!1001 &3164012534197137283

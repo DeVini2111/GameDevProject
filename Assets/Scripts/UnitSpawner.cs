@@ -11,9 +11,8 @@ public class UnitSpawner : MonoBehaviour
     private TextMeshProUGUI spawnButtonText;  // Text component of the button
 
     public GameManager gameManager;
-
+    public GameObject moneyRef_P1;   // Reference to player money
     public GameManager.Player player;
-
     public float cooldownTime = 2.0f; // Adjust this as needed for your cooldown time
     private float nextSpawnTime = 0.0f;
 
@@ -42,11 +41,16 @@ public class UnitSpawner : MonoBehaviour
 
     public void SpawnUnit()
     {
-        if (Time.time > nextSpawnTime)
+        if (Time.time > nextSpawnTime && moneyRef_P1.GetComponent<moneyCountP1>().money >= 20)
         {
+            Debug.Log("Unit purchased by player 1!");
             Instantiate(unitPrefab, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(unitPrefab.GetComponent<Unit>(), player);
             nextSpawnTime = Time.time + cooldownTime;
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
         }
     }
 }
