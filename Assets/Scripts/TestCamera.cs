@@ -35,8 +35,8 @@ public class TestCamera : MonoBehaviour
 
         // Boundries of the camera movement
         var move = transform.position;
-        move.x = Mathf.Clamp(move.x, +3, +30);
-        move.z = Mathf.Clamp(move.z, -18, +30);
+        move.x = Mathf.Clamp(move.x, +13, +30);
+        move.z = Mathf.Clamp(move.z, -18, +22);
         transform.position = move;
 
 
