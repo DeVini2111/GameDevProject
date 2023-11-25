@@ -6,6 +6,7 @@ public class Warrior : Unit
 {
     [SerializeField] private AudioSource attackSoundEffect;
     [SerializeField] private AudioSource deathSoundEffect;
+    [SerializeField] private AudioSource runSoundEffect;
 
     //Sight Range for Raycast
     public float sight;
@@ -22,6 +23,7 @@ public class Warrior : Unit
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         animator.SetTrigger("Moving");
+        runSoundEffect.Play();
 
         //Gets the Rigidbody Component of the current Unit
         unitRigidbody = GetComponent<Rigidbody>();
@@ -74,6 +76,7 @@ public class Warrior : Unit
             if (canMove) {
                 canMove = false;
                 animator.SetTrigger("Idle");
+                runSoundEffect.Stop();
             }
             //Attacks if the respective Unit is an enemy
             if (player == GameManager.Player.Player1) {
@@ -100,6 +103,7 @@ public class Warrior : Unit
     protected override void StartMoving() {
         canMove = true;
         animator.SetTrigger("Moving");
+        runSoundEffect.Play();
     }
 
     //Called when enemy Unit is in sight of current Unit
@@ -111,6 +115,7 @@ public class Warrior : Unit
         //Starts the Coroutine, which waits for the animation to play before attacking again
         StartCoroutine(AnimationAttackCoroutine());
         attackSoundEffect.Play();
+        runSoundEffect.Stop();
     }
     //Coroutine with waiting for animation
     IEnumerator AnimationAttackCoroutine() {

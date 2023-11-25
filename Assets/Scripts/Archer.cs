@@ -7,6 +7,8 @@ public class Archer : Unit
 
     [SerializeField] private AudioSource attackSoundEffect;
     [SerializeField] private AudioSource deathSoundEffect;
+    [SerializeField] private AudioSource runSoundEffect;
+
     //Raycast variable for the sight
     public float sight;
     //Raycast variable for the range
@@ -27,6 +29,7 @@ public class Archer : Unit
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         StartMoving();
+        runSoundEffect.Play();
 
         unitRigidbody = GetComponent<Rigidbody>();
     }
@@ -83,6 +86,7 @@ public class Archer : Unit
             //Stops the Unit if it moves
             canMove = false;
             animator.SetTrigger("Idle");
+            runSoundEffect.Stop();
         } else if (!inRange){
             StartMoving();
         }
@@ -127,7 +131,7 @@ public class Archer : Unit
         int damage = damageOutput;
         Unit toAttack = enemyInRange;
 
-        
+        runSoundEffect.Stop();
         StartCoroutine(AnimationAttackCoroutine(damage));
         attackSoundEffect.Play();
     }
@@ -165,6 +169,7 @@ public class Archer : Unit
         //Play die animation
         animator.SetBool("isDead", true);
         deathSoundEffect.Play();
+        runSoundEffect.Stop();
         canMove = false;
         isDead = true;
 
@@ -177,6 +182,7 @@ public class Archer : Unit
     protected override void StartMoving() {
         canMove = true;
         animator.SetTrigger("Moving");
+        runSoundEffect.Play();
     }
     
     void OnCollisionEnter(Collision other)
