@@ -41,9 +41,8 @@ public class UnitSpawner : MonoBehaviour
 
     public void SpawnUnit()
     {
-        if (Time.time > nextSpawnTime && moneyRef_P1.GetComponent<moneyCountP1>().money >= 20)
+        if (Time.time > nextSpawnTime && moneyRef_P1.GetComponent<moneyCountP1>().money >= unitPrefab.GetComponent<Unit>().GetCost())
         {
-            Debug.Log("Unit purchased by player 1!");
             Instantiate(unitPrefab, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(unitPrefab.GetComponent<Unit>(), player);
             nextSpawnTime = Time.time + cooldownTime;

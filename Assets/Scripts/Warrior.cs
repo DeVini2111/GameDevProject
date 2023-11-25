@@ -1,15 +1,18 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using TMPro;
 
 public class Warrior : Unit
 {
     [SerializeField] private AudioSource attackSoundEffect;
     [SerializeField] private AudioSource deathSoundEffect;
-    [SerializeField] private AudioSource runSoundEffect;
 
     //Sight Range for Raycast
     public float sight;
+
+    //Unit Cost
+    private int cost = 20;
 
     //Set all variables that needs to be used
     protected override void Start()
@@ -23,7 +26,6 @@ public class Warrior : Unit
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         animator.SetTrigger("Moving");
-        runSoundEffect.Play();
 
         //Gets the Rigidbody Component of the current Unit
         unitRigidbody = GetComponent<Rigidbody>();
@@ -34,10 +36,9 @@ public class Warrior : Unit
     //Moves the Unit according to the Player, if the Unit can move
     //Does a Raycast in order to simulate the current sight of the Unit
     //Stops if a friendly Unit is in sight and attacks enemy units
-    protected override void FixedUpdate()    // For debug
+    protected override void FixedUpdate()
     {
         if (canMove) {
-            //Debugging here
             if (player == GameManager.Player.Player1) {
                 unitRigidbody.MovePosition(transform.position + Vector3.forward * speed * Time.deltaTime);
             } else {
@@ -60,8 +61,6 @@ public class Warrior : Unit
         //True, if the Raycast hits another collider
         if (Physics.Raycast(ray, out RaycastHit hitData, sight))
         {
-            //Debugging
-            //Debug.Log(hitData.collider.gameObject.name);
 
             //Return if the collider is not a Unit (should not happen)
             if (!(hitData.transform.gameObject.CompareTag("Units Player1") 
@@ -76,7 +75,6 @@ public class Warrior : Unit
             if (canMove) {
                 canMove = false;
                 animator.SetTrigger("Idle");
-                runSoundEffect.Stop();
             }
             //Attacks if the respective Unit is an enemy
             if (player == GameManager.Player.Player1) {
@@ -103,7 +101,6 @@ public class Warrior : Unit
     protected override void StartMoving() {
         canMove = true;
         animator.SetTrigger("Moving");
-        runSoundEffect.Play();
     }
 
     //Called when enemy Unit is in sight of current Unit
@@ -115,7 +112,6 @@ public class Warrior : Unit
         //Starts the Coroutine, which waits for the animation to play before attacking again
         StartCoroutine(AnimationAttackCoroutine());
         attackSoundEffect.Play();
-        runSoundEffect.Stop();
     }
     //Coroutine with waiting for animation
     IEnumerator AnimationAttackCoroutine() {
@@ -153,13 +149,6 @@ public class Warrior : Unit
                 }
             }
         }
-        /**
-        if (unitInFront.isDead) {
-            if(!isDead) {
-                StartMoving();
-            }
-        }
-        **/
         yield return new WaitForSeconds(attackSpeed);
         //Unlock canAttack
         canAttack = true;
@@ -179,11 +168,18 @@ public class Warrior : Unit
         animator.SetBool("isDead", true);
         deathSoundEffect.Play();
         canMove = false;
-        isDead = true;
+
         //disable Unit or destroy Unit
         this.GetComponent<CapsuleCollider>().enabled = false;
         Destroy(this.unitRigidbody);
+        //Trigger OnUnitDeath Event
+        base.Die();
         this.enabled = false;
+    }
 
+    //Set Unit cost to the new variable
+    public override int GetCost()
+    {
+        return cost;
     }
 }

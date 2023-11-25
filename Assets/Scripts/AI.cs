@@ -36,13 +36,13 @@ public class AI : MonoBehaviour
     public void SpawnUnit()
     {
         unitspawn = Random.Range(1, 3);
-        if (Time.time > nextSpawnTime && unitspawn == 1 && moneyRef_P2.GetComponent<moneyCountP2>().money >= 20)
+        if (Time.time > nextSpawnTime && unitspawn == 1 && moneyRef_P2.GetComponent<moneyCountP2>().money >= warrior.GetComponent<Warrior>().GetCost())
         {
             Instantiate(warrior, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(warrior.GetComponent<Warrior>(), Player2);
             nextSpawnTime = Time.time + cooldownTime;
         }
-        else if(Time.time > nextSpawnTime && unitspawn == 2 && moneyRef_P2.GetComponent<moneyCountP2>().money >= 20)
+        else if(Time.time > nextSpawnTime && unitspawn == 2 && moneyRef_P2.GetComponent<moneyCountP2>().money >= archer.GetComponent<Archer>().GetCost())
         {
             Instantiate(archer, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(archer.GetComponent<Archer>(), Player2);

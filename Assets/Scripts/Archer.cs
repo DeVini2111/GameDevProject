@@ -1,24 +1,27 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Archer : Unit
 {
 
     [SerializeField] private AudioSource attackSoundEffect;
     [SerializeField] private AudioSource deathSoundEffect;
-    [SerializeField] private AudioSource runSoundEffect;
-
     //Raycast variable for the sight
     public float sight;
     //Raycast variable for the range
     public float range;
     //Reference to the enemy unit in range
-
     private Unit enemyInRange;
 
+    //Checks if Unit can fire
     private bool inRange;
 
+    //Unit cost
+    private int cost = 10;
+
+    //public bool isDead;
     protected override void Start()
     {
         maxHealth = 70;
@@ -29,16 +32,14 @@ public class Archer : Unit
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
         StartMoving();
-        runSoundEffect.Play();
-
         unitRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
+    //Moving the Unit
     protected override void FixedUpdate()
     {
         if (canMove) {
-            //Debugging here
             if (player == GameManager.Player.Player1) {
                 unitRigidbody.MovePosition(transform.position + Vector3.forward * speed * Time.deltaTime);
             } else {
@@ -74,9 +75,6 @@ public class Archer : Unit
         //controls the movement if a another Unit is in Front
         if (Physics.Raycast(sightRay, out RaycastHit hitData, sight))
         {
-            //Debugging
-            Debug.Log(hitData.collider.gameObject.name);
-
             //Return if the collider is not a Unit (should not happen)
             if (!(hitData.transform.gameObject.CompareTag("Units Player1") 
             || hitData.transform.gameObject.CompareTag("Units Player2"))) {
@@ -86,7 +84,6 @@ public class Archer : Unit
             //Stops the Unit if it moves
             canMove = false;
             animator.SetTrigger("Idle");
-            runSoundEffect.Stop();
         } else if (!inRange){
             StartMoving();
         }
@@ -131,7 +128,7 @@ public class Archer : Unit
         int damage = damageOutput;
         Unit toAttack = enemyInRange;
 
-        runSoundEffect.Stop();
+        
         StartCoroutine(AnimationAttackCoroutine(damage));
         attackSoundEffect.Play();
     }
@@ -169,12 +166,12 @@ public class Archer : Unit
         //Play die animation
         animator.SetBool("isDead", true);
         deathSoundEffect.Play();
-        runSoundEffect.Stop();
         canMove = false;
-        isDead = true;
-
+        //Disable or Destroy the Unit
         this.GetComponent<CapsuleCollider>().enabled = false;
         Destroy(this.unitRigidbody);
+        //Trigger OnUnitDeath Event
+        base.Die();
         this.enabled = false;
 
     }
@@ -182,11 +179,11 @@ public class Archer : Unit
     protected override void StartMoving() {
         canMove = true;
         animator.SetTrigger("Moving");
-        runSoundEffect.Play();
     }
-    
-    void OnCollisionEnter(Collision other)
+
+    //Set the new cost variable
+    public override int GetCost()
     {
-        canMove = false;
+        return cost;
     }
 }

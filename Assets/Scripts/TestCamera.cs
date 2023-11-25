@@ -35,14 +35,14 @@ public class TestCamera : MonoBehaviour
 
         // Boundries of the camera movement
         var move = transform.position;
-        move.x = Mathf.Clamp(move.x, +13, +30);
-        move.z = Mathf.Clamp(move.z, -18, +22);
+        move.x = Mathf.Clamp(move.x, +3, +30);
+        move.z = Mathf.Clamp(move.z, -18, +30);
         transform.position = move;
 
 
         // Camera Zoom
         float zoomSpeed = 10f;
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        transform.Translate(scroll * zoomSpeed, 0, 0, Space.World);
+        transform.Translate(-(scroll * zoomSpeed), 0, 0, Space.World);
     }
 }

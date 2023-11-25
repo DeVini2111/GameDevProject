@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static GameManager;
 
@@ -9,7 +10,8 @@ public class Unit : MonoBehaviour
     public Animator animator;
     public LayerMask enemyUnits;
     public Player player;
-    public bool isDead;
+    //Action (special event) with the Player as a parameter gets triggered when a Unit dies
+    public static event Action<Player> OnUnitDeath;
     protected Rigidbody unitRigidbody;
     protected float speed;
     protected bool canMove;
@@ -56,16 +58,14 @@ public class Unit : MonoBehaviour
     }
     
     //Disables the Unit and it's collider upon call
-    protected virtual void Die() {
-        //Play Die animation
-        //Destroy Unit
-        //Inform Game Manager that Unit is dead
+    //Triggers the OnUnitDeath Event if the Event is not null
+    protected virtual void Die(){
+        OnUnitDeath?.Invoke(this.player);
     }
 
-    //Checking state of the Unit (if its alive)
-    public bool IsDead
+    //Get Method for the cost of a unit
+    public virtual int GetCost()
     {
-        get { return isDead;}
+        return 0;
     }
-
 }

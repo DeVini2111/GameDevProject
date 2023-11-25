@@ -1,8 +1,8 @@
+
 using UnityEngine;
 
 public class Base : Unit
 {
-
 
     // Start is called before the first frame update
     protected override void Start()
@@ -17,13 +17,9 @@ public class Base : Unit
     }
     
      protected override void Die() {
-        //disable Unit
-        isDead = true;
         //disable Unit or destroy Unit
         this.GetComponent<BoxCollider>().enabled = false;
-        //Destroy(this.unitRigidbody);
+        base.Die();
         this.enabled = false;
     }
-
-
 }
