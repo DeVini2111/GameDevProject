@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 2184440994234450132}
   - component: {fileID: 6213392115370939285}
   - component: {fileID: 5169766125058487164}
-  - component: {fileID: 162529574070779356}
+  - component: {fileID: 3112341940694192383}
   m_Layer: 7
   m_Name: ArcherP2
   m_TagString: Units Player2
@@ -436,10 +436,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: 1
-  isDead: 0
   attackSoundEffect: {fileID: 6213392115370939285}
   deathSoundEffect: {fileID: 5169766125058487164}
-  runSoundEffect: {fileID: 162529574070779356}
+  runSoundEffect: {fileID: 3112341940694192383}
   sight: 2
   range: 10
 --- !u!82 &6213392115370939285
@@ -634,7 +633,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &162529574070779356
+--- !u!82 &3112341940694192383
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,7 +645,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0f22691d9137a794794cd0fe5c556a3b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
