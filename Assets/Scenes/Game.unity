@@ -1929,8 +1929,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wizard
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
-  m_sharedMaterial: {fileID: 2045686458697335038, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2464,8 +2464,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Warrior
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
-  m_sharedMaterial: {fileID: 2045686458697335038, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3241,8 +3241,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Archer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
-  m_sharedMaterial: {fileID: 2045686458697335038, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4227,8 +4227,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: King
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
-  m_sharedMaterial: {fileID: 2045686458697335038, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5398,6 +5398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warrior: {fileID: 1582977797727922226, guid: 7d07358c049c30844a15b8623014d778, type: 3}
   archer: {fileID: 1860605567064870449, guid: 0cfbaca0f3c1eaa43b294c88da6eee75, type: 3}
+  wizard: {fileID: 4424627607088254413, guid: c47fa8cb74488d94c9799f15ca39a9b0, type: 3}
+  king: {fileID: 1030721735884956807, guid: 2124ead5bedcb594685b55ffaea6ec70, type: 3}
   spawnPoint: {fileID: 15113088}
   gameManager: {fileID: 33602002}
   Player2: 1
@@ -9257,8 +9259,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Money
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
-  m_sharedMaterial: {fileID: 2045686458697335038, guid: dc6c552027ba2c74e8301da7d16ce81f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
