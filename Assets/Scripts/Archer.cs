@@ -156,7 +156,7 @@ public class Archer : Unit
                     yield return null;
                 }
         }
-        yield return new WaitForSeconds(attackSpeed / 1.5f);
+        yield return new WaitForSeconds(attackSpeed);
         canAttack = true;
 
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8569002046465337698}
   - component: {fileID: 3069306129334707821}
   - component: {fileID: 434432681017438691}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: HealthBarA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +26,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359059184278300942}
   m_LocalRotation: {x: -0.0007714371, y: -0.06191682, z: -0.018696055, w: 0.99790585}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
-  m_LocalScale: {x: 0.6301938, y: 0.6301938, z: 0.6301938}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 2.4335306, y: 2.4335306, z: 2.4335306}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2862303883156245834}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.221, y: -7.097, z: -2.133}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.4, y: -5.5}
+  m_AnchoredPosition: {x: 4.7, y: -1.2}
   m_SizeDelta: {x: 60, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3069306129334707821
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3256198860196707964}
   - component: {fileID: 452578621338254756}
   - component: {fileID: 1904547887792791705}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,8 +244,8 @@ Transform:
   m_GameObject: {fileID: 1860605567064870449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.5, z: -6.78}
-  m_LocalScale: {x: 6.06, y: 6.9459515, z: 1.5934587}
+  m_LocalPosition: {x: -1e-15, y: 1.44, z: -6.9364}
+  m_LocalScale: {x: 7.550232, y: 8.65405, z: 1.9853106}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5049706625789957825}
@@ -440,7 +440,7 @@ MonoBehaviour:
   deathSoundEffect: {fileID: 5169766125058487164}
   runSoundEffect: {fileID: 3112341940694192383}
   sight: 2
-  range: 10
+  range: 5
 --- !u!82 &6213392115370939285
 AudioSource:
   m_ObjectHideFlags: 0
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 1879455943024527371}
   - component: {fileID: 2363735727078483169}
   - component: {fileID: 8076673080137329734}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 5806657212993570984}
   - component: {fileID: 524997751281563418}
   - component: {fileID: 2482914277164973519}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: archer health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,8 +831,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6115564508401339767}
   m_LocalRotation: {x: 0.0061575957, y: -0.0057045813, z: -0.000035127156, w: 0.9999648}
-  m_LocalPosition: {x: 0, y: 0, z: -0.18}
-  m_LocalScale: {x: 0.008572893, y: 0.0074795843, z: 0.03257152}
+  m_LocalPosition: {x: 0, y: 0, z: -0.185}
+  m_LocalScale: {x: 0.0014605769, y: 0.0012743083, z: 0.0055492595}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8569002046465337698}
@@ -840,7 +840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.03, y: 0.28}
+  m_AnchoredPosition: {x: 0.03, y: 0.23}
   m_SizeDelta: {x: 264.1397, y: 23.7105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5806657212993570984
@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 2862303883156245834}
   - component: {fileID: 2638284469393640486}
   - component: {fileID: 5073915824611490709}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

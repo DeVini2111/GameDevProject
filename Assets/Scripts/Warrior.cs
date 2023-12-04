@@ -115,43 +115,39 @@ public class Warrior : Unit
         if (!canAttack) return;
         //Starts the Coroutine, which waits for the animation to play before attacking again
         StartCoroutine(AnimationAttackCoroutine());
-        attackSoundEffect.Play();
-        runSoundEffect.Stop();
+
     }
     //Coroutine with waiting for animation
     IEnumerator AnimationAttackCoroutine() {
         //Disable further attacks from this Unit
         canAttack = false;
+        runSoundEffect.Stop();
+
+        int damage = damageOutput;
+
         //Randomly chosses a heavy attack (other animation and double damage) or normal attack
         if (UnityEngine.Random.value < 0.2f) {
             animator.SetTrigger("Attack1");
-            //Wait for Transition to Attack Animation
-            yield return new WaitForSeconds(0.15f);
-            //Wait till Attack Animation is over
-            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
-                yield return null;
-            }
-            //Deal damage to Unit in front (enemy Unit in sight)
-            unitInFront.TakeDamage(damageOutput * 2);
-            //Wait till the Hit Animation of the unit in front played
-            //If Unit has an animator
-            if (!unitInFront.animator.IsUnityNull()) {
-                while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
-                    yield return null;
-                }
-            }
+            damage = damage *2;
         } else {
-            //Same principle here
             animator.SetTrigger("Attack2");
-            yield return new WaitForSeconds(0.15f);
-            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+        }
+        attackSoundEffect.Play();
+
+        //Wait for Transition to Attack Animation
+        yield return new WaitForSeconds(0.15f);
+        //Wait till Attack Animation is over
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+            yield return null;
+        }
+        //Deal damage to Unit in front (enemy Unit in sight)
+        unitInFront.TakeDamage(damage);
+
+        //Wait till the Hit Animation of the unit in front played
+        //If Unit has an animator
+        if (!unitInFront.animator.IsUnityNull()) {
+            while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
                 yield return null;
-            }
-            unitInFront.TakeDamage(damageOutput);
-            if (!unitInFront.animator.IsUnityNull()) {
-                while (unitInFront.animator.GetCurrentAnimatorStateInfo(0).IsName("GettingHit")) {
-                    yield return null;
-                }
             }
         }
         yield return new WaitForSeconds(attackSpeed);

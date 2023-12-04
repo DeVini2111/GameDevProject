@@ -108,6 +108,10 @@ public class GameManager : MonoBehaviour
                 if (moneyRef_P2 == null) {
                     return;
                 }
+                //IsEmpty
+                if (unitsByPlayer[Player.Player1].Count == 0) {
+                    return;
+                }
                 //Get the unit cost + 20 as a reward
                 int returnMoney = unitsByPlayer[Player.Player1].Peek().GetCost() + 20;
 
@@ -120,6 +124,10 @@ public class GameManager : MonoBehaviour
             } else {
                 //Double check that the reference is not null
                 if (moneyRef_P1 == null) {
+                    return;
+                }
+                //IsEmpty
+                if (unitsByPlayer[Player.Player2].Count == 0) {
                     return;
                 }
                 //Get the unit cost + 20 as a reward
