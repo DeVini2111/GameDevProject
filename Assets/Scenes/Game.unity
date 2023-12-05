@@ -4668,6 +4668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warrior: {fileID: 1582977797727922226, guid: 7d07358c049c30844a15b8623014d778, type: 3}
   archer: {fileID: 1860605567064870449, guid: 0cfbaca0f3c1eaa43b294c88da6eee75, type: 3}
+  wizard: {fileID: 4424627607088254413, guid: c47fa8cb74488d94c9799f15ca39a9b0, type: 3}
+  king: {fileID: 1030721735884956807, guid: 2124ead5bedcb594685b55ffaea6ec70, type: 3}
   spawnPoint: {fileID: 15113088}
   gameManager: {fileID: 33602002}
   Player2: 1

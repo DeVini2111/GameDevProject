@@ -113,7 +113,8 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 //Get the unit cost + 20 as a reward
-                int returnMoney = unitsByPlayer[Player.Player1].Peek().GetCost() + 20;
+                //AI gets more money back for killed Units
+                int returnMoney = unitsByPlayer[Player.Player1].Peek().GetCost() + 40;
 
                 //Access money reference of oppisite Player
                 moneyRef_P2.GetComponent<moneyCountP2>().addMoney(returnMoney);
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 //Get the unit cost + 20 as a reward
-                int returnMoney = unitsByPlayer[Player.Player2].Peek().GetCost() + 20;
+                int returnMoney = unitsByPlayer[Player.Player2].Peek().GetCost() + 25;
 
                 //Access money reference of oppisite Player
                 moneyRef_P1.GetComponent<moneyCountP1>().addMoney(returnMoney);

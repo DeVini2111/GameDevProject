@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5844715146127785596}
   - component: {fileID: 9054410514543498696}
   - component: {fileID: 3787443386899841538}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1473544339559250163}
   - component: {fileID: 2833890912347369475}
   - component: {fileID: 2771363792397191282}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 9028255381520848192}
   - component: {fileID: 8399272384479788256}
   - component: {fileID: 3114488924176143902}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,9 +303,9 @@ GameObject:
   - component: {fileID: 4488002181825369469}
   - component: {fileID: 4336626947294191599}
   - component: {fileID: 1646238794609604653}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Wizard Player2
-  m_TagString: Units Player1
+  m_TagString: Units Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 8166940017286873558}
   - component: {fileID: 1612714245272262574}
   - component: {fileID: 495062373632225703}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 2843854191704560435}
   - component: {fileID: 9037145663043481003}
   - component: {fileID: 1869722484454869367}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

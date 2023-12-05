@@ -18,10 +18,12 @@ public class AI : MonoBehaviour
     private float nextSpawnTime = 0.0f;
     public GameObject moneyRef_P2;   // Reference to player money
     int unitspawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        moneyRef_P2.GetComponent<moneyCountP2>().addMoney(50);
+
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class AI : MonoBehaviour
     //add to redo the sale code for test purposes but bad, TO CHANGE
     public void SpawnUnit()
     {
-        //unitspawn = Random.Range(1, 11); debug only
+        unitspawn = Random.Range(1, 11);
         print(unitspawn);
         if (Time.time > nextSpawnTime && unitspawn < 3 && moneyRef_P2.GetComponent<moneyCountP2>().money >= warrior.GetComponent<Warrior>().GetCost())
         {
@@ -45,20 +47,20 @@ public class AI : MonoBehaviour
             gameManager.AddUnit(warrior.GetComponent<Warrior>(), Player2);
             nextSpawnTime = Time.time + cooldownTime;
         }
-        else if(Time.time > nextSpawnTime && (unitspawn >= 4 && unitspawn <= 6) && moneyRef_P2.GetComponent<moneyCountP2>().money >= archer.GetComponent<Archer>().GetCost())
+        else if(Time.time > nextSpawnTime && unitspawn > 3 && unitspawn <= 4 && moneyRef_P2.GetComponent<moneyCountP2>().money >= archer.GetComponent<Archer>().GetCost())
         {
             Instantiate(archer, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(archer.GetComponent<Archer>(), Player2);
             nextSpawnTime = Time.time + cooldownTime;
         }
 
-        if (Time.time > nextSpawnTime && (unitspawn > 6 && unitspawn <= 8) && moneyRef_P2.GetComponent<moneyCountP2>().money >= wizard.GetComponent<Wizard>().GetCost())
+        if (Time.time > nextSpawnTime && unitspawn > 5 && unitspawn <= 7 && moneyRef_P2.GetComponent<moneyCountP2>().money >= wizard.GetComponent<Wizard>().GetCost())
         {
             Instantiate(wizard, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(wizard.GetComponent<Wizard>(), Player2);
             nextSpawnTime = Time.time + cooldownTime;
         }
-        else if (Time.time > nextSpawnTime && (unitspawn >= 9 && unitspawn <= 10) && moneyRef_P2.GetComponent<moneyCountP2>().money >= king.GetComponent<King>().GetCost())
+        else if (Time.time > nextSpawnTime && unitspawn == 10 && moneyRef_P2.GetComponent<moneyCountP2>().money >= king.GetComponent<King>().GetCost())
         {
             Instantiate(king, spawnPoint.position, spawnPoint.rotation);
             gameManager.AddUnit(king.GetComponent<King>(), Player2);
