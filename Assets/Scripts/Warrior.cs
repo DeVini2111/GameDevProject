@@ -122,6 +122,7 @@ public class Warrior : Unit
         //Disable further attacks from this Unit
         canAttack = false;
         runSoundEffect.Stop();
+        animator.SetBool("isAttacking", true);
 
         int damage = damageOutput;
 
@@ -150,6 +151,7 @@ public class Warrior : Unit
                 yield return null;
             }
         }
+        animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(attackSpeed);
         //Unlock canAttack
         canAttack = true;

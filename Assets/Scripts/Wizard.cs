@@ -25,13 +25,13 @@ public class Wizard : Unit
     //Set all variables that needs to be used
     protected override void Start()
     {
-        maxHealth = 50;
+        maxHealth = 30;
         speed = 4f;
         canAttack = true;
         attackSpeed = 3f;
-        damageOutput = 50;
+        damageOutput = 65;
         healSpeed = 5f;
-        healing = 15;
+        healing = 10;
         canHeal = true;
         canMove = true;
         currentHealth = maxHealth;
@@ -141,6 +141,7 @@ public class Wizard : Unit
         canAttack = false;
         runSoundEffect.Stop();
         animator.SetTrigger("Attack");
+        animator.SetBool("isAttacking", true);
         attackSoundEffect.Play();
 
         //Wait for Transition to Attack Animation
@@ -158,6 +159,7 @@ public class Wizard : Unit
                 yield return null;
             }
         }
+        animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(attackSpeed);
         //Unlock canAttack
         canAttack = true;
