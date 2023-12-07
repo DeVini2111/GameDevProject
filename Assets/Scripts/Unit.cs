@@ -44,6 +44,11 @@ public class Unit : MonoBehaviour
     //Deals damage to the current Unit and plays the hit animation
     public virtual void TakeDamage(int damage)
     {
+        if (damage < 0) {
+            if (currentHealth == maxHealth) {
+                return;
+            }
+        }
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         //Checks if Unit died
